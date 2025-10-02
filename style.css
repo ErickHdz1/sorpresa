@@ -1,0 +1,193 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    color: #fff;
+    /* Fondo degradado suave */
+    background: linear-gradient(135deg, #FF69B4 0%, #FFB6C1 100%); 
+    text-align: center;
+    overflow: hidden;
+}
+
+#app {
+    width: 90%;
+    max-width: 600px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.5s ease;
+}
+
+.slide {
+    display: none;
+    /* Animación de entrada para los slides */
+    animation: fadeIn 1s ease-in-out; 
+}
+
+.slide.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 3em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1.2em;
+    margin: 15px 0;
+}
+
+.btn {
+    padding: 12px 25px;
+    font-size: 1.1em;
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;
+    background-color: #fff;
+    color: #FF69B4;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    margin-top: 20px;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    max-height: 50vh; /* ¡NUEVO! Limita la altura máxima al 50% de la altura de la ventana */
+    object-fit: contain; /* Ajusta la imagen dentro de los límites sin recortarla */
+    border-radius: 10px;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.time-unit {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+input[type="text"] {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    width: 80%;
+    max-width: 300px;
+    margin-top: 15px;
+    font-size: 1em;
+    text-align: center;
+}
+
+.final-slide {
+    /* ESTA LÍNEA ES LA QUE DEBES REEMPLAZAR */
+    background: linear-gradient(135deg, #FF69B4 0%, #FFB6C1 100%); /* <-- ¡Este es el degradado del fondo principal! */
+
+    padding: 50px;
+    border-radius: 25px;
+    border: 5px solid #fff;
+    animation: finalGlow 2s infinite alternate;
+}
+
+
+    @keyframes heartBeat {
+    0% { transform: scale(1); text-shadow: 0 0 5px #fff; }
+    50% { transform: scale(1.03); text-shadow: 0 0 15px #ff69b4, 0 0 5px #fff; }
+    100% { transform: scale(1); text-shadow: 0 0 5px #fff; }
+}
+
+
+.final-message {
+    font-family: 'Pacifico', cursive;
+    font-size: 4.5em; /* Aumentamos el tamaño */
+    color: #fff;
+    text-shadow: 3px 3px 5px rgba(0,0,0,0.5);
+    margin-top: 0;
+    animation: heartBeat 2s infinite alternate ease-in-out; /* Aplica la animación */
+}
+
+
+
+/* Estilo específico para el botón de respuesta final */
+.final-btn {
+    background-color: #f92387; /* Amarillo o un color que contraste */
+    color: #ffffff; /* Rojo/Naranja */
+    padding: 15px 35px;
+    font-size: 1.5em;
+    margin-top: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.final-btn:hover {
+    transform: scale(1.1);
+}
+/* --- ESTILOS PARA LA NOTIFICACIÓN MODAL --- */
+.modal {
+    display: none; /* Inicia oculto */
+    position: fixed; /* Posición fija sobre todo */
+    z-index: 1000; /* Asegura que esté encima de todo */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6); /* Fondo semi-transparente oscuro */
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: linear-gradient(45deg, #ffb6c1, #ff69b4); /* Mismo degradado temático */
+    margin: 15% auto; /* Centrar verticalmente */
+    padding: 30px;
+    border-radius: 15px;
+    width: 80%;
+    max-width: 400px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    position: relative;
+    animation: slideUp 0.5s ease-out;
+}
+
+.modal-message {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    margin: 20px 0;
+}
+
+/* Animación de entrada */
+@keyframes slideUp {
+    from { transform: translateY(100px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.close-btn {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
